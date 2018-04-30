@@ -43,21 +43,43 @@ class Player {
     }
 
     render() {
-        debugger;
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
     }
 
     update() { }
 
-    handleInput() { }
+    handleInput(key) {
+        switch (key) {
+            case "left":
+                console.log("you pressed the key "+key);
+                //if the left key is pressed, move up one row
+                this.x = this.x - 101;
+                break;
+            
+            case "right":
+                console.log("you pressed the key "+key);
+                this.x = this.x + 101;
+                break;
+            
+            case "up":
+                console.log("you pressed the key "+key);
+                this.y = this.y - 83;
+                break;
+            
+            case "down":
+                console.log("you pressed the key "+key);
+                this.y = this.y + 83;
+                break;
+        }
+    }
 } 
 
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+
 let enemy1 = new Enemy(-25, 60);
 let enemy2 = new Enemy(-25, 143);
 let enemy3 = new Enemy(-25, 226);
@@ -65,7 +87,9 @@ let enemy3 = new Enemy(-25, 226);
 let allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
 
-let player = new Player(0, 0);
+// Place the player object in a variable called player
+// Start a player in the middle of the bottom row
+let player = new Player(202, 400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
