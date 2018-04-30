@@ -52,24 +52,20 @@ class Player {
     handleInput(key) {
         switch (key) {
             case "left":
-                console.log("you pressed the key "+key);
-                //if the left key is pressed, move up one row
-                this.x = this.x - 101;
+                //if the left key is pressed, move left one column, but not off screen
+                this.x - 101 >= 0 ? this.x = this.x - 101 : undefined;
                 break;
             
             case "right":
-                console.log("you pressed the key "+key);
-                this.x = this.x + 101;
+                this.x + 101 <= 500 ? this.x = this.x + 101 : undefined;
                 break;
             
             case "up":
-                console.log("you pressed the key "+key);
-                this.y = this.y - 83;
+                this.y - 83 >= -83 ? this.y = this.y - 83 : undefined;
                 break;
             
             case "down":
-                console.log("you pressed the key "+key);
-                this.y = this.y + 83;
+                this.y + 83 <= 400 ? this.y = this.y + 83: undefined;
                 break;
         }
     }
