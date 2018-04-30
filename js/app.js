@@ -47,7 +47,17 @@ class Player {
 
     }
 
-    update() { }
+    update() { 
+        //if the player is on water, bring him back home
+        if (this.y === -15) {
+            setTimeout(function(){
+                player.x = 202;
+                player.y = 400    
+            }, 1000)
+            
+        }
+
+    }
 
     handleInput(key) {
         switch (key) {
