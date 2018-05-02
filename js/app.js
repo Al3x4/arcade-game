@@ -53,7 +53,20 @@ class Player {
             setTimeout(function(){
                 player.x = 202;
                 player.y = 400    
-            }, 1000)
+            }, 500)
+            
+        }
+        //if the player is on the same space as a enemy, bring him back home
+        if (this.y === 68 || this.y === 151 || this.y ===  234) {
+            let playerX = this.x;
+            let playerY = this.y;
+            allEnemies.forEach(function(enemy){
+                if (enemy.x-40 < playerX && playerX < enemy.x+80 && playerY === enemy.y+8) {
+                    console.log(`collision because the player position is ${playerX} and the enemy is at ${enemy.x}`);
+                    player.x = 202;
+                    player.y = 400 
+                }
+            })
             
         }
 
