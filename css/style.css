@@ -1,3 +1,16 @@
 body {
     text-align: center;
+    background: #000000
+    color: #fff;
+}
+
+.game-stats {
+	width: 500px;
+	margin:0 auto;
+	text-align: left;
+}
+
+.game-stats p {
+	display:inline-block;
+	width: 160px;
 }
