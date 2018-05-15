@@ -33,7 +33,6 @@ class Enemy {
 };
 
 
-
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -50,11 +49,14 @@ class Player {
     }
 
     update() { 
-        //if the player is on water, bring him back home
+        //if the player is on water,, get a life and a win, and update the board, bring him back home
         if (this.y === -15) {
+            game.getLife();
+            game.getWin();
             setTimeout(function(){
                 player.x = 202;
-                player.y = 400    
+                player.y = 400;
+
             }, 500)
             
         }
@@ -96,7 +98,32 @@ class Player {
     }
 } 
 
+class Game {
+    constructor(lives) {
+        this.lives = lives;
+        this.wins = 0;
+    }
 
+    getWin() {
+        this.wins +=1;
+        document.getElementById('success').innerText = this.wins;
+    }
+
+    getLife() {
+        this.lives +=1;
+        document.getElementById('lives').innerText = this.lives;
+    }
+
+    loseLife() {
+        this.lives -=1;
+    }
+
+    gameover() {
+        if (this.lives === 0) {
+            document.getElementById('game-over').classList.add('show');
+        }
+    }
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -111,6 +138,13 @@ allEnemies.push(enemy1, enemy2, enemy3);
 // Place the player object in a variable called player
 // Start a player in the middle of the bottom row
 let player = new Player(202, 400);
+
+//start a new game
+let game = new Game(3);
+
+document.getElementById('lives').innerText = game.lives;
+document.getElementById('success').innerText = game.wins;
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
