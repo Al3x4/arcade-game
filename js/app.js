@@ -41,6 +41,7 @@ class Player {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-boy.png';
+        this.won = false;
     }
 
     render() {
@@ -49,31 +50,32 @@ class Player {
     }
 
     update() { 
-        //if the player is on water,, get a life and a win, and update the board, bring him back home
-        if (this.y === -15) {
-            game.getLife();
-            game.getWin();
+        //if the player is on water, get a life and a win, and update the board, bring him back home
+        if (this.y === -15) { 
+            this.won = true;
+            //i had to do this to stop the events below form firing for about 30 times, i just move the player slightly
+            this.y = -14;
+            game.winround(); 
             setTimeout(function(){
-                player.x = 202;
-                player.y = 400;
-
-            }, 500)
-            
+                player.reset()
+            }, 500);
         }
+
         //if the player is on the same space as a enemy, bring him back home
         if (this.y === 68 || this.y === 151 || this.y ===  234) {
-            let playerX = this.x;
-            let playerY = this.y;
+            let that = this;
             allEnemies.forEach(function(enemy){
-                if (enemy.x-40 < playerX && playerX < enemy.x+80 && playerY === enemy.y+8) {
-                    console.log(`collision because the player position is ${playerX} and the enemy is at ${enemy.x}`);
-                    player.x = 202;
-                    player.y = 400 
+                if (enemy.x-40 < that.x && that.x < enemy.x+80 && that.y === enemy.y+8) {
+                    that.reset();
+                    game.loseLife();
                 }
-            })
-            
+            }) 
         }
+    }
 
+    reset() {
+        this.x = 202;
+        this.y = 400; 
     }
 
     handleInput(key) {
@@ -104,21 +106,32 @@ class Game {
         this.wins = 0;
     }
 
+    winround(){
+        if (player.won === true) {
+            this.getWin();
+            this.getLife();
+            this.won = false;
+        }
+     }
+
     getWin() {
-        this.wins +=1;
+        this.wins += 1;
         document.getElementById('success').innerText = this.wins;
     }
 
     getLife() {
-        this.lives +=1;
+        this.lives += 1;
         document.getElementById('lives').innerText = this.lives;
     }
 
     loseLife() {
-        this.lives -=1;
+        if (this.lives > 0) {
+            this.lives -= 1;
+            document.getElementById('lives').innerText = this.lives;
+        }       
     }
 
-    gameover() {
+    over() {
         if (this.lives === 0) {
             document.getElementById('game-over').classList.add('show');
         }
