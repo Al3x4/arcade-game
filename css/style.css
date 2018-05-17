@@ -46,3 +46,32 @@ canvas {
 	background: linear-gradient(#1e87f5 0%, #2989d8 72%, #1e5799 100%);   
 	border-radius: 0 0 10px 10px;
 }
+
+
+.modal {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	padding-top: 20%;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+}
+
+.modal-inner {
+	background: #f7f7f7;
+	margin: 0 auto;
+	padding: 20px 40px;
+	width: 70%;
+	max-width: 800px; 
+	border-radius: 20px;
+	font-family: 'Righteous', cursive;
+	color: #1e5799;
+
+}
+
+.hide {
+	display: none;
+}

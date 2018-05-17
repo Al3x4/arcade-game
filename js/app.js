@@ -34,7 +34,6 @@ class Enemy {
     }
 };
 
-
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -66,9 +65,16 @@ class Player {
                 if (enemy.x-40 < thisPlayer.x && thisPlayer.x < enemy.x+80 && thisPlayer.y === enemy.y+8) {
                     thisPlayer.reset();
                     game.loseLife();
+                    game.over();
                 }
             }) 
         }
+        //if the player is on the same space as a gem, get a gem and place another gem 
+        if (this.x === gem.x && this.y === gem.y) {
+            game.updateGems();
+            gem = new Gem();
+        }
+
     }
 
     reset() { 
@@ -102,6 +108,7 @@ class Game {
     constructor(lives) {
         this.lives = lives;
         this.wins = 0;
+        this.gems = 0;
     }
 
     winround(){
@@ -124,14 +131,30 @@ class Game {
 
     loseLife() {
         if (this.lives > 0) {
+            console.log(this);
+            console.log(this.lives)
             this.lives -= 1;
             document.getElementById('lives').innerText = this.lives;
         }       
     }
 
+    updateGems() {
+        if (this.gems === 5) {
+            this.getLife();
+            this.gems = 0;
+        } else {
+            this.gems += 1;
+        };
+        document.getElementById('gems').innerText = this.gems;
+
+    }
+
     over() {
         if (this.lives === 0) {
-            document.getElementById('game-over').classList.add('show');
+            console.log("lala");
+            document.getElementById('game-over').classList.remove('hide');
+            
+
         }
     }
 }
@@ -139,7 +162,7 @@ class Game {
 class Gem {
     constructor(x, y) {
         this.x = [0, 101, 202, 303, 404][Math.floor(Math.random() * 5)];
-        this.y = [60, 143, 226][Math.floor(Math.random() * 3)];
+        this.y = [68, 151, 234][Math.floor(Math.random() * 3)];
         this.sprite = ['images/Gem\ Blue.png', 'images/Gem\ Orange.png', 'images/Gem\ Green.png'][Math.floor(Math.random() * 3)];
     }
 
@@ -151,7 +174,6 @@ class Gem {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-
 let enemy1 = new Enemy(-25, 60);
 let enemy2 = new Enemy(-25, 143);
 let enemy3 = new Enemy(-25, 226);
@@ -163,6 +185,7 @@ allEnemies.push(enemy1, enemy2, enemy3);
 // Start a player in the middle of the bottom row
 let player = new Player(202, 400);
 
+//create a gem at a random place
 let gem = new Gem();
 
 //start a new game
