@@ -20,9 +20,10 @@ class Enemy {
         //this updates the enemy position every dt
         this.x = this.x + (this.speed * dt);
 
-        //if enemy goes off screen, get him back to the beginning
+        //if enemy goes off screen, get him back to the beginning and increase spped
         if (this.x > 501) {
             this.x = -30;
+            this.speed +=10;
         }
     }
 
