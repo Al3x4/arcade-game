@@ -1,6 +1,15 @@
-frontend-nanodegree-arcade-game
-===============================
+# Front-End Web Developer Nanodegree Program
+## Project 4 - Arcade Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This is my take on the classic Frogger
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+### Description
+ - The game randomly assigns speeds to the enemies. controll the player with the arrow keys to get him from the grass ot the water. 
+ - Enemies get quicker with every lap but slow down again after a while.
+ - When the player gets to the water he earns a [life](images/Heart.png)] and a [star](images/Star.png) and returns to his initial spot.
+ - Each 5 [gems](images/Gem\ Blue.png) collected exchange themselves for 1 life. 
+ - The game finishes when the player loses all his lives. If the player never loses, the game never ends. 
+
+
+Play live here: https://al3x4.github.io/arcade-game/
+
