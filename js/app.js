@@ -55,7 +55,7 @@ class Player {
         if (this.y === -15) { 
             this.won = true;
             this.y = -14; //move the player slightly so this conditional is not true again 
-            setTimeout(() => {this.reset(); console.log(this)}, 500); 
+            setTimeout(() => this.reset(), 500); 
             game.winround();        
         }
 
