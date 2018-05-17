@@ -46,36 +46,35 @@ class Player {
 
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
     }
 
     update() { 
         //if the player is on water, get a life and a win, and update the board, bring him back home
         if (this.y === -15) { 
             this.won = true;
-            //i had to do this to stop the events below form firing for about 30 times, i just move the player slightly
-            this.y = -14;
-            game.winround(); 
-            setTimeout(function(){
-                player.reset()
-            }, 500);
+            this.y = -14; //move the player slightly so this conditional is not true again 
+            this.reset();   
+            game.winround();        
         }
 
         //if the player is on the same space as a enemy, bring him back home
         if (this.y === 68 || this.y === 151 || this.y ===  234) {
-            let that = this;
+            let thisPlayer = this;
             allEnemies.forEach(function(enemy){
-                if (enemy.x-40 < that.x && that.x < enemy.x+80 && that.y === enemy.y+8) {
-                    that.reset();
+                if (enemy.x-40 < thisPlayer.x && thisPlayer.x < enemy.x+80 && thisPlayer.y === enemy.y+8) {
+                    thisPlayer.reset();
                     game.loseLife();
                 }
             }) 
         }
     }
 
-    reset() {
-        this.x = 202;
-        this.y = 400; 
+    reset() { 
+        let thisPlayer = this;
+        setTimeout(function(){
+            thisPlayer.x = 202;
+            thisPlayer.y = 400
+        }, 500);
     }
 
     handleInput(key) {
