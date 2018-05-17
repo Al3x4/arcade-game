@@ -24,7 +24,7 @@ class Enemy {
         if (this.x > 501) {
             this.x = -30;
             //just making sure the enemies don't get too fast, but randomise or oncrease their speed every run
-            this.speed < (Math.random() + 1) * 400 ? this.speed += 50 : this.speed = Math.floor((Math.random() + 1 ) * 200);
+           this.speed < (Math.random() + 1) * 400 ? this.speed += 50 : this.speed = Math.floor((Math.random() + 1 ) * 200);
         }
     }
 
@@ -136,6 +136,19 @@ class Game {
     }
 }
 
+class Gem {
+    constructor(x, y) {
+        this.x = [0, 101, 202, 303, 404][Math.floor(Math.random() * 5)];
+        this.y = [60, 143, 226][Math.floor(Math.random() * 3)];
+        this.sprite = ['images/Gem\ Blue.png', 'images/Gem\ Orange.png', 'images/Gem\ Green.png'][Math.floor(Math.random() * 3)];
+    }
+
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 
@@ -149,6 +162,8 @@ allEnemies.push(enemy1, enemy2, enemy3);
 // Place the player object in a variable called player
 // Start a player in the middle of the bottom row
 let player = new Player(202, 400);
+
+let gem = new Gem();
 
 //start a new game
 let game = new Game(3);
