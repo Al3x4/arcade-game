@@ -22,7 +22,7 @@ class Enemy {
 
         //if enemy goes off screen, get him back to the beginning and increase spped
         if (this.x > 501) {
-            this.x = -30;
+            this.x = -50;
             //just making sure the enemies don't get too fast, but randomise or oncrease their speed every run
            this.speed < (Math.random() + 1) * 400 ? this.speed += 50 : this.speed = Math.floor((Math.random() + 1 ) * 200);
         }
@@ -154,7 +154,6 @@ class Game {
         if (this.lives === 0) {
             console.log("lala");
             document.getElementById('game-over').classList.remove('hide');
-            
             //TO DO - how can i remove controls from the player while the modal is up?
         }
     }
@@ -182,9 +181,9 @@ class Gem {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let enemy1 = new Enemy(-25, 60);
-let enemy2 = new Enemy(-25, 143);
-let enemy3 = new Enemy(-25, 226);
+let enemy1 = new Enemy(-50, 60);
+let enemy2 = new Enemy(-50, 143);
+let enemy3 = new Enemy(-50, 226);
 
 let allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
