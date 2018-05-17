@@ -4,7 +4,7 @@ body {
     color: #fff;
 }
 
-/*GAME DASHBOARD*/
+/*GAME DASHBOARD--------------------------------------------------*/
 .game-stats {
 	width: 535px;
 	padding-top: 16px;
@@ -47,6 +47,7 @@ canvas {
 	border-radius: 0 0 10px 10px;
 }
 
+/*MODAL---------------------------------------------------------*/
 
 .modal {
 	display: block;
@@ -70,6 +71,23 @@ canvas {
 	font-family: 'Righteous', cursive;
 	color: #1e5799;
 
+}
+
+button {
+	margin: 30px auto;
+	width: 200px;
+	height: 50px;
+	color: #1e5799;
+	font-family: 'Righteous', cursive;
+	font-size: 1.2em;
+	background: none;
+	border: 1px solid #1e5799;
+	border-radius: 10px;
+}
+
+button:hover {
+	background: #1e5799;
+	color: #ffffff;
 }
 
 .hide {

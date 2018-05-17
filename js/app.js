@@ -105,8 +105,8 @@ class Player {
 } 
 
 class Game {
-    constructor(lives) {
-        this.lives = lives;
+    constructor() {
+        this.lives = 3;
         this.wins = 0;
         this.gems = 0;
     }
@@ -122,6 +122,7 @@ class Game {
     getWin() {
         this.wins += 1;
         document.getElementById('success').innerText = this.wins;
+        document.getElementById('final-stars').innerText = this.wins;
     }
 
     getLife() {
@@ -154,8 +155,15 @@ class Game {
             console.log("lala");
             document.getElementById('game-over').classList.remove('hide');
             
-
+            //TO DO - how can i remove controls from the player while the modal is up?
         }
+    }
+
+    resetBoard() {
+        document.getElementById('lives').innerText = this.lives;
+        document.getElementById('success').innerText = this.wins;
+        document.getElementById('gems').innerText = this.gems;
+        document.getElementById('game-over').classList.add('hide');
     }
 }
 
@@ -189,10 +197,8 @@ let player = new Player(202, 400);
 let gem = new Gem();
 
 //start a new game
-let game = new Game(3);
-
-document.getElementById('lives').innerText = game.lives;
-document.getElementById('success').innerText = game.wins;
+let game = new Game();
+game.resetBoard();
 
 
 // This listens for key presses and sends the keys to your
@@ -206,4 +212,10 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+document.getElementById('replay').addEventListener('click', function(){
+    game = new Game();
+    game.resetBoard();
+    
 });
