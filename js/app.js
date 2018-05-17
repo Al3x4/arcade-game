@@ -5,7 +5,7 @@ class Enemy {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.speed = Math.floor(Math.random()*200);
+    this.speed = Math.floor((Math.random() + 1 ) * 200);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -23,7 +23,8 @@ class Enemy {
         //if enemy goes off screen, get him back to the beginning and increase spped
         if (this.x > 501) {
             this.x = -30;
-            this.speed +=10;
+            //just making sure the enemies don't get too fast, but randomise or oncrease their speed every run
+            this.speed < (Math.random() + 1) * 400 ? this.speed += 50 : this.speed = Math.floor((Math.random() + 1 ) * 200);
         }
     }
 
