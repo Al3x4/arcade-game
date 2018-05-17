@@ -218,3 +218,7 @@ document.getElementById('replay').addEventListener('click', function(){
     game.resetBoard();
     
 });
+document.getElementById('play').addEventListener('click', function(){
+    document.getElementById('game-start').classList.add('hide');
+    
+});

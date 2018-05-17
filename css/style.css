@@ -90,6 +90,10 @@ button:hover {
 	color: #ffffff;
 }
 
+#replay {
+	width: 300px;
+}
+
 .hide {
 	display: none;
 }
