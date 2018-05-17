@@ -55,7 +55,7 @@ canvas {
 	top: 0;
 	left: 0;
 	z-index: 1;
-	padding-top: 20%;
+	padding-top: 20vh;
 	width: 100%;
 	height: 100%;
 	background: rgba(0,0,0,0.4);
@@ -71,6 +71,12 @@ canvas {
 	font-family: 'Righteous', cursive;
 	color: #1e5799;
 
+}
+
+.modal-inner img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
 }
 
 button {
