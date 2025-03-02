@@ -5,7 +5,7 @@ class Enemy {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.speed = Math.floor((Math.random() + 1 ) * 200);
+    this.speed = Math.floor((Math.random() + 1 ) * 100);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
